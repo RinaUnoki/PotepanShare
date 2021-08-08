@@ -1,0 +1,35 @@
+  <h3>ユーザー編集</h3>
+ 
+    <%= form_for @user do |f| %>
+      <table>
+        <tr>
+          <th><%= f.label :name ,"名前" %></th>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :email ,"メールアドレス" %></th>
+          <td><%= f.text_field :email %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :password ,"パスワード" %></th>
+          <td><%= f.text_field :password %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :repassword ,"パスワード確認" %></th>
+          <td><%= f.text_field :repassword %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :introduction ,"自己紹介" %></th>
+          <td><%= f.text_area :introduction %></td>
+        </tr>
+      </table>
+      <div>
+        <ul>
+        <li><input name = "image" type = "file"></li>
+         <li><%= form_tag("/users/#{@user.id}/update", {multipart:true}) do %></li>
+         <% end %>
+          <li><%= f.submit "編集を完了する" %></li>
+          <li><%= link_to "ユーザー情報一覧に戻る", :users %></li>
+        </ul>
+      </div>
+    <% end %>
