@@ -25,11 +25,10 @@
       </table>
       <div>
         <ul>
-        <li><input name = "image" type = "file"></li>
-         <li><%= form_tag("/users/#{@user.id}/update", {multipart:true}) do %></li>
-         <% end %>
+         <li><%= f.file_field :image %></li>
           <li><%= f.submit "編集を完了する" %></li>
-          <li><%= link_to "ユーザー情報一覧に戻る", :users %></li>
+          <li><%= link_to "トップに戻る", :users %></li>
         </ul>
       </div>
-    <% end %>
+      <% end %>
+    

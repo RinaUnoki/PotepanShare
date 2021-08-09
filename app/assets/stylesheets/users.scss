@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .header {
     width: 100%;
-    height: 70px;
+    height: 80px;
     padding: 4px 30px;
     background-color: #000000;
 }
@@ -469,9 +469,12 @@ header {
   clear: both;
 }
 
+.image {
+  width : 70px;
+}
+
 /* フラッシュ ================================ */
 .flash {
-  padding: 10px 0;
   color: white;
   background: rgb(251, 170, 88);
   text-align: center;
