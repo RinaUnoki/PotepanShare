@@ -3,15 +3,10 @@ class UsersController < ApplicationController
   
   def index
     @users = User.all
-    @user = User.find_by(params[:id])
   end
   
   def new
     @user = User.new
-  end
-  
-  def user_params
-    params.require(:user).permit(:image)
   end
   
   def show
@@ -21,17 +16,15 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
-
   
   def create
     @user = User.new(
 		name: params[:name],
 		email: params[:email],
 		password: params[:password],
-		repassword: params[:repassword],
+		password_confirmation: params[:password_confirmation],
 		introduction: params[:introduction],
-		image: params[:image],
-		image_name: "default_user.jpg",
+		image_name: params[:image_name]
 	)
 
     #@user = User.new(params.require(:user).permit(:name, :email, :password, :repassword,:image_name))
@@ -45,7 +38,7 @@ class UsersController < ApplicationController
   
    def update
     @user = User.find(params[:id])
-      if @user.update(params.require(:user).permit(:name, :email, :password, :repassword, :introduction))
+      if @user.update(params.require(:user).permit(:name, :email, :password, :password_confirmation,  :introduction, :image_name))
         flash[:notice] = "情報を更新しました"
         redirect_to :users
       else
