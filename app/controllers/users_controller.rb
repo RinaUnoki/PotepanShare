@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  protect_from_forgery
   
   def index
     @users = User.all
@@ -18,16 +17,7 @@ class UsersController < ApplicationController
   end
   
   def create
-    @user = User.new(
-		name: params[:name],
-		email: params[:email],
-		password: params[:password],
-		password_confirmation: params[:password_confirmation],
-		introduction: params[:introduction],
-		image_name: params[:image_name]
-	)
-
-    #@user = User.new(params.require(:user).permit(:name, :email, :password, :repassword,:image_name))
+    @user = User.new(params.require(:user).permit(:name, :email, :password, :password_confirmation, :introduction, :image_name))
       if @user.save
         flash[:notice] = "ユーザーを新規登録しました"
         redirect_to :users
